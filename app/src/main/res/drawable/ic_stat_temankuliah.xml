@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ikon status bar notifikasi: siluet topi wisuda + buku dari ikon aplikasi (satu warna). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <!-- Topi -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M512,202L790,310L512,418L234,310Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M356,380L512,440L668,380L668,445Q668,485 512,485Q356,485 356,445Z" />
+    <!-- Tassel -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M736,316L748,316L748,440L772,440L772,510L712,510L712,440L736,440Z" />
+    <!-- Buku -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M262,560Q400,540 512,595L512,740Q400,700 262,705Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M762,560Q624,540 512,595L512,740Q624,700 762,705Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M226,720Q400,690 512,745Q624,690 798,720L798,748Q624,720 512,793Q400,720 226,748Z" />
+</vector>

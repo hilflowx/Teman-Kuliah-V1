@@ -1,0 +1,101 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+  warningsAsErrors: false
+
+style:
+  # Batas panjang baris 160 (bawaan detekt 120). Komentar tidak dihitung.
+  MaxLineLength:
+    active: true
+    maxLineLength: 160
+    excludeCommentStatements: true
+
+  # Angka ajaib: fungsi @Composable/@Preview (ukuran, bobot, durasi UI) dikecualikan.
+  MagicNumber:
+    active: true
+    ignorePropertyDeclaration: true
+    ignoreRanges: true
+    ignoreAnnotated:
+      - 'Composable'
+      - 'Preview'
+
+  # Detect unused imports
+  UnusedImports:
+    active: true
+
+  # Detect unused private members (functions, variables, classes)
+  UnusedPrivateMember:
+    active: true
+    allowedNames: '(_|ignored|expected|serialVersionUID)'
+    ignoreAnnotated:
+      - 'Preview'
+
+  # Detect unused private properties
+  UnusedPrivateProperty:
+    active: true
+    allowedNames: '(_|ignored|expected|serialVersionUID)'
+
+  # Detect unused parameters in functions and constructors
+  UnusedParameter:
+    active: true
+    allowedNames: '(_|ignored|expected)'
+
+naming:
+  # Konvensi Compose: fungsi @Composable memakai PascalCase.
+  FunctionNaming:
+    active: true
+    ignoreAnnotated:
+      - 'Composable'
+      - 'Preview'
+
+complexity:
+  active: true
+  # Overly complex code checks
+  ComplexCondition:
+    active: true
+    threshold: 4
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+    ignoreAnnotated:
+      - 'Composable'
+      - 'Preview'
+    ignoreSingleWhenExpression: true
+    ignoreSimpleWhenEntries: true
+  CognitiveComplexMethod:
+    active: true
+    threshold: 15
+    ignoreAnnotated:
+      - 'Composable'
+      - 'Preview'
+  LongMethod:
+    active: true
+    threshold: 60
+    ignoreAnnotated:
+      - 'Composable'
+      - 'Preview'
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 7
+    ignoreDefaultParameters: true
+    ignoreDataClasses: true
+    ignoreAnnotated:
+      - 'Composable'
+  LargeClass:
+    active: true
+    threshold: 600
+  NestedBlockDepth:
+    active: true
+    threshold: 4
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 20
+    thresholdInClasses: 20
+    thresholdInInterfaces: 15
+    thresholdInObjects: 15
+    thresholdInEnums: 15
+    ignoreDeprecated: true
+    ignoreOverridden: true

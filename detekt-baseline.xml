@@ -1,0 +1,472 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>CognitiveComplexMethod:AcademicReconciler.kt$AcademicReconciler$fun parseKhsTail(tokens: List&lt;String&gt;): KhsTail?</ID>
+    <ID>CognitiveComplexMethod:AcademicReconciler.kt$AcademicReconciler$fun pickKrsNumberRun(tokens: List&lt;String&gt;, sksColumn: Boolean? = null): KrsRun?</ID>
+    <ID>CognitiveComplexMethod:AcademicRowParser.kt$AcademicRowParser$fun findAcademicRows(text: String, isKrs: Boolean = false): List&lt;AcademicRow&gt;</ID>
+    <ID>CognitiveComplexMethod:AcademicRowParser.kt$AcademicRowParser$private fun parseDelimited(rawCells: List&lt;String&gt;, isKrs: Boolean): AcademicRow?</ID>
+    <ID>CognitiveComplexMethod:BackupArchiveReader.kt$BackupArchiveReader$private fun readSnapshot(input: InputStream, workDir: File): Snapshot</ID>
+    <ID>CognitiveComplexMethod:BackupSnapshotValidator.kt$BackupSnapshotValidator$internal fun validateSnapshot(s: Snapshot)</ID>
+    <ID>CognitiveComplexMethod:CourseRepository.kt$CourseRepository$suspend fun importCourses( userId: Long, semester: Int, rows: List&lt;AcademicDocumentProcessor.AcademicRow&gt;, replaceExisting: Boolean, isKrs: Boolean = false ): ImportResult</ID>
+    <ID>CognitiveComplexMethod:DocumentController.kt$DocumentController$fun savePreviewCourses(replaceExisting: Boolean, customStartDateIso: String? = null)</ID>
+    <ID>CognitiveComplexMethod:KhsRowParser.kt$KhsRowParser$internal fun parseKhsFreeText(line: String): AcademicRow?</ID>
+    <ID>CognitiveComplexMethod:KrsRowParser.kt$KrsRowParser$internal fun krsContinuation(previous: AcademicRow, rawLine: String): AcademicRow?</ID>
+    <ID>CognitiveComplexMethod:KrsRowParser.kt$KrsRowParser$internal fun parseKrsColumns(line: String, sksColumn: Boolean? = null): AcademicRow?</ID>
+    <ID>CognitiveComplexMethod:KrsRowParser.kt$KrsRowParser$internal fun parseKrsFreeText(line: String): AcademicRow?</ID>
+    <ID>CognitiveComplexMethod:KrsRowParser.kt$KrsRowParser$private fun extractKrsNameSksLecturer(middleText: String, sksColumn: Boolean? = null): KrsExtractedMiddle?</ID>
+    <ID>CognitiveComplexMethod:LocalDataArchive.kt$LocalDataArchive$private suspend fun applyRestore( context: Context, database: TemanKuliahDatabase, snapshot: Snapshot, activeUserEmail: String? ): Summary</ID>
+    <ID>CognitiveComplexMethod:LocalDataArchive.kt$LocalDataArchive$suspend fun exportToFile( context: Context, database: TemanKuliahDatabase, target: File, maxUncompressedBytes: Long = MAX_ARCHIVE_UNCOMPRESSED ): Summary</ID>
+    <ID>CognitiveComplexMethod:ScheduleController.kt$ScheduleController$fun saveEdit(original: ScheduleEntity, editScope: ScheduleEditScope, draft: ScheduleDraft)</ID>
+    <ID>CognitiveComplexMethod:ScheduleRepository.kt$ScheduleRepository$suspend fun replaceRows(existingIds: Collection&lt;Long&gt;, newRows: List&lt;ScheduleEntity&gt;): ReplaceResult</ID>
+    <ID>CognitiveComplexMethod:ScheduleRules.kt$ScheduleRules$fun buildRows( draft: ScheduleDraft, userId: Long, semester: Int, semesterStart: LocalDate?, classType: String = DEFAULT_CLASS_TYPE, groupIdFor: (dayOfWeek: Int) -&gt; String = { UUID.randomUUID().toString() } ): List&lt;ScheduleEntity&gt;</ID>
+    <ID>CognitiveComplexMethod:ScheduleRules.kt$ScheduleRules$fun validate(draft: ScheduleDraft, semesterStart: LocalDate?): String?</ID>
+    <ID>CognitiveComplexMethod:StudentFileStore.kt$StudentFileStore$suspend fun commitStagedAcademicDocument( context: Context, dao: AcademicDocumentDao, staged: StagedAcademicDocument ): AcademicDocumentEntity</ID>
+    <ID>CognitiveComplexMethod:StudentFileStore.kt$StudentFileStore$suspend fun saveProfileImage(context: Context, userId: Long, uri: Uri): String</ID>
+    <ID>CognitiveComplexMethod:StudentFileStore.kt$StudentFileStore$suspend fun stageAcademicDocument( context: Context, resolver: ContentResolver, userId: Long, semester: Int, type: String, uri: Uri, displayName: String ): StagedAcademicDocument</ID>
+    <ID>CognitiveComplexMethod:UserRepository.kt$UserRepository$suspend fun createPasswordForAccount( emailOrPhone: String, newPassword: String, confirmPassword: String ): Result&lt;UserEntity&gt;</ID>
+    <ID>CognitiveComplexMethod:UserRepository.kt$UserRepository$suspend fun loginWithEmailAndPassword(emailOrPhone: String, password: String): Result&lt;UserEntity&gt;</ID>
+    <ID>ComplexCondition:AcademicReconciler.kt$AcademicReconciler$gradeToken.length &gt; 2 || !sksToken.all { it.isLetterOrDigit() || it == '|' } || sksToken.length &gt; 2</ID>
+    <ID>ComplexCondition:AcademicRowParser.kt$AcademicRowParser$!isKrs &amp;&amp; grade.isBlank() &amp;&amp; gradeToken in Grades.VALID &amp;&amp; gradeToken != "-"</ID>
+    <ID>ComplexCondition:AcademicRowParser.kt$AcademicRowParser$code.isBlank() &amp;&amp; schedule.isBlank() &amp;&amp; lecturer.isBlank() &amp;&amp; totalSks == 0</ID>
+    <ID>ComplexCondition:AcademicRowParser.kt$AcademicRowParser$isKrs &amp;&amp; continuationOpen &amp;&amp; !afterTotal &amp;&amp; continuationCount &lt; 2 &amp;&amp; rows.isNotEmpty()</ID>
+    <ID>ComplexCondition:AcademicRowParser.kt$AcademicRowParser$isKrs &amp;&amp; lecturer.isBlank() &amp;&amp; name.isNotBlank() &amp;&amp; hasLecturerHint(cell)</ID>
+    <ID>ComplexCondition:AcademicRowParser.kt$AcademicRowParser$isKrs &amp;&amp; row.schedule.isNotBlank() &amp;&amp; !DAY_REGEX.containsMatchIn(row.schedule) &amp;&amp; currentDay.isNotBlank()</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.documents.any { it.id &lt;= 0 || it.userId !in userSet || it.semester &lt; 1 || it.type !in setOf("KRS", "KHS") || it.displayName.isBlank() || !StudentFileStore.isSafeRelativePath(it.storedPath) || !it.storedPath.startsWith("academic_documents/") }</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.events.any { it.userId !in userSet || it.semester &lt; 1 || it.title.isBlank() || it.type !in setOf("Ujian", "Kegiatan Akademik") || it.scheduledAtMillis &lt;= 0L }</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.milestones.any { milestone -&gt; milestone.userId !in userSet || milestone.projectId !in projectIds || milestone.title.isBlank() || milestone.deadlineAtMillis &lt;= 0L || projectsById[milestone.projectId]?.userId != milestone.userId }</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.projects.any { it.userId !in userSet || it.semester &lt; 1 || it.title.isBlank() || it.deadlineAtMillis &lt;= 0L || it.progress !in 0..100 }</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.tasks.any { it.userId !in userSet || it.title.isBlank() || it.semester &lt; 1 || it.dueAtMillis &lt;= 0L || it.priority !in setOf("Rendah", "Sedang", "Tinggi") || it.status !in setOf(TaskStatus.BELUM, TaskStatus.SEDANG, TaskStatus.SELESAI) || (it.courseId != null &amp;&amp; it.courseId !in (courseIdsByUser[it.userId] ?: emptySet())) }</ID>
+    <ID>ComplexCondition:BackupSnapshotValidator.kt$BackupSnapshotValidator$s.users.any { it.fullName.isBlank() || it.authType !in setOf(AUTH_GUEST, AUTH_LOCAL) || it.activeSemester &lt; 1 || it.semesterCount &lt; it.activeSemester || (it.profileImagePath != null &amp;&amp; (!StudentFileStore.isSafeRelativePath(it.profileImagePath) || !it.profileImagePath.startsWith("profile_images/"))) || (it.recoveryCodeHash != null &amp;&amp; !LocalPasswordHasher.isEncoded(it.recoveryCodeHash)) }</ID>
+    <ID>ComplexCondition:CourseDialogs.kt$code.isNotBlank() &amp;&amp; name.isNotBlank() &amp;&amp; !timeOrderInvalid &amp;&amp; totalCredits in 1..MAX_SKS_PER_COURSE &amp;&amp; semester != null &amp;&amp; semester &gt;= 1</ID>
+    <ID>ComplexCondition:DocumentController.kt$DocumentController$row.courseName.isBlank() || parsed.dayOfWeek !in 1..7 || rowStart.isBlank() || rowEnd.isBlank()</ID>
+    <ID>ComplexCondition:DocumentFileAccess.kt$success &amp;&amp; file != null &amp;&amp; file.exists() &amp;&amp; file.length() &gt; 0</ID>
+    <ID>ComplexCondition:KrsRowParser.kt$KrsRowParser$code.isBlank() &amp;&amp; schedule.isBlank() &amp;&amp; lecturer.isBlank() &amp;&amp; totalSks == 0</ID>
+    <ID>ComplexCondition:KrsRowParser.kt$KrsRowParser$hasLetters(name, 3) &amp;&amp; theory != null &amp;&amp; practice != null &amp;&amp; dayCell != null</ID>
+    <ID>CyclomaticComplexMethod:AcademicReconciler.kt$AcademicReconciler$fun parseKhsTail(tokens: List&lt;String&gt;): KhsTail?</ID>
+    <ID>CyclomaticComplexMethod:AcademicRowParser.kt$AcademicRowParser$fun findAcademicRows(text: String, isKrs: Boolean = false): List&lt;AcademicRow&gt;</ID>
+    <ID>CyclomaticComplexMethod:AcademicRowParser.kt$AcademicRowParser$private fun parseDelimited(rawCells: List&lt;String&gt;, isKrs: Boolean): AcademicRow?</ID>
+    <ID>CyclomaticComplexMethod:BackupArchiveReader.kt$BackupArchiveReader$private fun readSnapshot(input: InputStream, workDir: File): Snapshot</ID>
+    <ID>CyclomaticComplexMethod:BackupSnapshotCodec.kt$BackupSnapshotCodec$internal fun encodeSnapshot(s: Snapshot): String</ID>
+    <ID>CyclomaticComplexMethod:BackupSnapshotValidator.kt$BackupSnapshotValidator$internal fun validateSnapshot(s: Snapshot)</ID>
+    <ID>CyclomaticComplexMethod:CourseRepository.kt$CourseRepository$suspend fun importCourses( userId: Long, semester: Int, rows: List&lt;AcademicDocumentProcessor.AcademicRow&gt;, replaceExisting: Boolean, isKrs: Boolean = false ): ImportResult</ID>
+    <ID>CyclomaticComplexMethod:DocumentController.kt$DocumentController$fun savePreviewCourses(replaceExisting: Boolean, customStartDateIso: String? = null)</ID>
+    <ID>CyclomaticComplexMethod:KhsRowParser.kt$KhsRowParser$internal fun parseKhsFreeText(line: String): AcademicRow?</ID>
+    <ID>CyclomaticComplexMethod:KrsRowParser.kt$KrsRowParser$internal fun parseKrsColumns(line: String, sksColumn: Boolean? = null): AcademicRow?</ID>
+    <ID>CyclomaticComplexMethod:KrsRowParser.kt$KrsRowParser$internal fun parseKrsFreeText(line: String): AcademicRow?</ID>
+    <ID>CyclomaticComplexMethod:KrsRowParser.kt$KrsRowParser$private fun extractKrsNameSksLecturer(middleText: String, sksColumn: Boolean? = null): KrsExtractedMiddle?</ID>
+    <ID>CyclomaticComplexMethod:LocalDataArchive.kt$LocalDataArchive$private suspend fun applyRestore( context: Context, database: TemanKuliahDatabase, snapshot: Snapshot, activeUserEmail: String? ): Summary</ID>
+    <ID>CyclomaticComplexMethod:ScheduleRules.kt$ScheduleRules$fun validate(draft: ScheduleDraft, semesterStart: LocalDate?): String?</ID>
+    <ID>CyclomaticComplexMethod:StudentFileStore.kt$StudentFileStore$suspend fun saveProfileImage(context: Context, userId: Long, uri: Uri): String</ID>
+    <ID>CyclomaticComplexMethod:TaskFiltering.kt$internal fun filterTasks( tasks: List&lt;TaskEntity&gt;, courses: List&lt;CourseEntity&gt;, query: String, filter: String, statusFilter: String, priorityFilter: String, courseFilterId: Long?, now: Long, dayStart: Long, tomorrow: Long ): List&lt;TaskEntity&gt;</ID>
+    <ID>LongMethod:AcademicRowParser.kt$AcademicRowParser$fun findAcademicRows(text: String, isKrs: Boolean = false): List&lt;AcademicRow&gt;</ID>
+    <ID>LongMethod:AcademicRowParser.kt$AcademicRowParser$private fun parseDelimited(rawCells: List&lt;String&gt;, isKrs: Boolean): AcademicRow?</ID>
+    <ID>LongMethod:BackupArchiveReader.kt$BackupArchiveReader$private fun readSnapshot(input: InputStream, workDir: File): Snapshot</ID>
+    <ID>LongMethod:BackupSnapshotCodec.kt$BackupSnapshotCodec$internal fun encodeSnapshot(s: Snapshot): String</ID>
+    <ID>LongMethod:CourseRepository.kt$CourseRepository$suspend fun importCourses( userId: Long, semester: Int, rows: List&lt;AcademicDocumentProcessor.AcademicRow&gt;, replaceExisting: Boolean, isKrs: Boolean = false ): ImportResult</ID>
+    <ID>LongMethod:DocumentController.kt$DocumentController$fun savePreviewCourses(replaceExisting: Boolean, customStartDateIso: String? = null)</ID>
+    <ID>LongMethod:KrsRowParser.kt$KrsRowParser$internal fun parseKrsColumns(line: String, sksColumn: Boolean? = null): AcademicRow?</ID>
+    <ID>LongMethod:KrsRowParser.kt$KrsRowParser$private fun extractKrsNameSksLecturer(middleText: String, sksColumn: Boolean? = null): KrsExtractedMiddle?</ID>
+    <ID>LongMethod:LocalDataArchive.kt$LocalDataArchive$private suspend fun applyRestore( context: Context, database: TemanKuliahDatabase, snapshot: Snapshot, activeUserEmail: String? ): Summary</ID>
+    <ID>LongMethod:SplashScreen.kt$SplashAnimState$suspend fun playEntrance(): Unit</ID>
+    <ID>LongParameterList:AcademicDocumentRepository.kt$AcademicDocumentRepository$( context: Context, resolver: ContentResolver, userId: Long, semester: Int, type: String, uri: Uri, displayName: String )</ID>
+    <ID>LongParameterList:AcademicDocumentRepository.kt$AcademicDocumentRepository$( context: Context, userId: Long, semester: Int, type: String, photo: File, displayName: String )</ID>
+    <ID>LongParameterList:AuthController.kt$AuthController$( fullName: String, nim: String, studyProgram: String, faculty: String, university: String, semester: Int, email: String, password: String, onSuccess: () -&gt; Unit )</ID>
+    <ID>LongParameterList:CourseController.kt$CourseController$( course: CourseEntity, code: String, name: String, credits: Int, gradeLetter: String, semester: Int, lecturer: String = course.lecturer, classTime: String = course.classTime )</ID>
+    <ID>LongParameterList:FeatureController.kt$FeatureContext$( val application: Application, val database: TemanKuliahDatabase, val repository: TemanKuliahRepository, val scope: CoroutineScope, val currentUser: StateFlow&lt;UserEntity?&gt;, val activeSemester: StateFlow&lt;Int&gt;, val snackbar: MutableStateFlow&lt;String?&gt;, val profileEditError: MutableStateFlow&lt;String?&gt;, val closeDialog: () -&gt; Unit )</ID>
+    <ID>LongParameterList:ReminderScheduler.kt$ReminderScheduler$(context: Context, kind: String, id: Long, title: String, message: String, triggerAtMillis: Long)</ID>
+    <ID>LongParameterList:StudentFileStore.kt$StudentFileStore$( context: Context, resolver: ContentResolver, userId: Long, semester: Int, type: String, uri: Uri, displayName: String )</ID>
+    <ID>LongParameterList:TaskCard.kt$( dueAtMillis: Long, now: Long, dayStart: Long, isDone: Boolean, isOverdue: Boolean, isToday: Boolean )</ID>
+    <ID>LongParameterList:TaskFiltering.kt$( tasks: List&lt;TaskEntity&gt;, courses: List&lt;CourseEntity&gt;, query: String, filter: String, statusFilter: String, priorityFilter: String, courseFilterId: Long?, now: Long, dayStart: Long, tomorrow: Long )</ID>
+    <ID>LongParameterList:TemanKuliahRepository.kt$TemanKuliahRepository$( context: Context, resolver: ContentResolver, userId: Long, semester: Int, type: String, uri: Uri, displayName: String )</ID>
+    <ID>LongParameterList:TemanKuliahRepository.kt$TemanKuliahRepository$( context: Context, userId: Long, semester: Int, type: String, photo: File, displayName: String )</ID>
+    <ID>LongParameterList:TemanKuliahRepository.kt$TemanKuliahRepository$( fullName: String, nim: String, studyProgram: String, faculty: String, university: String, semester: Int, email: String, password: String )</ID>
+    <ID>LongParameterList:TemanKuliahRepository.kt$TemanKuliahRepository$( private val database: RoomDatabase, userDao: UserDao, courseDao: CourseDao, scheduleDao: ScheduleDao, academicDocumentDao: AcademicDocumentDao, taskDao: TaskDao, academicEventDao: AcademicEventDao, projectDao: ProjectDao, projectMilestoneDao: ProjectMilestoneDao )</ID>
+    <ID>LongParameterList:TemanKuliahRepository.kt$TemanKuliahRepository$( userId: Long, fullName: String, nim: String, studyProgram: String, faculty: String, university: String )</ID>
+    <ID>LongParameterList:UserRepository.kt$UserRepository$( fullName: String, nim: String, studyProgram: String, faculty: String, university: String, semester: Int, email: String, password: String )</ID>
+    <ID>LongParameterList:UserRepository.kt$UserRepository$( userId: Long, fullName: String, nim: String, studyProgram: String, faculty: String, university: String )</ID>
+    <ID>LoopWithTooManyJumpStatements:AcademicRowParser.kt$AcademicRowParser$for</ID>
+    <ID>LoopWithTooManyJumpStatements:KrsRowParser.kt$KrsRowParser$for</ID>
+    <ID>LoopWithTooManyJumpStatements:ScheduleRules.kt$ScheduleRules$for</ID>
+    <ID>MagicNumber:AcademicNameText.kt$AcademicNameText$3</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$0.03</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$0.85</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$0.95</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$14.0</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$16.0</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$180</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$270</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$3</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$3.5f</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$32</ID>
+    <ID>MagicNumber:AcademicOcrReader.kt$AcademicOcrReader$90</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$0.011</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$1.15</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$1.2f</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$3</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$3f</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$4</ID>
+    <ID>MagicNumber:AcademicReconciler.kt$AcademicReconciler$5</ID>
+    <ID>MagicNumber:AcademicRowParser.kt$AcademicRowParser$100</ID>
+    <ID>MagicNumber:AcademicRowParser.kt$AcademicRowParser$3</ID>
+    <ID>MagicNumber:AcademicRowParser.kt$AcademicRowParser$4</ID>
+    <ID>MagicNumber:AcademicScheduleText.kt$AcademicScheduleText$24</ID>
+    <ID>MagicNumber:AcademicScheduleText.kt$AcademicScheduleText$3</ID>
+    <ID>MagicNumber:AcademicScheduleText.kt$AcademicScheduleText$4</ID>
+    <ID>MagicNumber:AcademicScheduleText.kt$AcademicScheduleText$60</ID>
+    <ID>MagicNumber:AcademicTables.kt$0xFFEEF4FC</ID>
+    <ID>MagicNumber:AddScheduleDialog.kt$24</ID>
+    <ID>MagicNumber:AddScheduleDialog.kt$60</ID>
+    <ID>MagicNumber:BackupArchiveReader.kt$BackupArchiveReader$40</ID>
+    <ID>MagicNumber:BackupAssetFiles.kt$BackupAssetFiles$5</ID>
+    <ID>MagicNumber:BackupAssetFiles.kt$BackupAssetFiles$8</ID>
+    <ID>MagicNumber:BackupSnapshotCodec.kt$BackupSnapshotCodec$180</ID>
+    <ID>MagicNumber:BackupSnapshotCodec.kt$BackupSnapshotCodec$30</ID>
+    <ID>MagicNumber:BackupSnapshotCodec.kt$BackupSnapshotCodec$360</ID>
+    <ID>MagicNumber:BackupSnapshotCodec.kt$BackupSnapshotCodec$8</ID>
+    <ID>MagicNumber:BackupSnapshotValidator.kt$BackupSnapshotValidator$10</ID>
+    <ID>MagicNumber:BackupSnapshotValidator.kt$BackupSnapshotValidator$20</ID>
+    <ID>MagicNumber:BackupSnapshotValidator.kt$BackupSnapshotValidator$40</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Kuliah$0xFF1858B8</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Kuliah$0xFF2F80ED</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Kuliah$0xFFEAF3FF</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Tugas$0xFF9A3D00</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Tugas$0xFFF2994A</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Tugas$0xFFFFF0E3</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Ujian$0xFFB91C1C</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Ujian$0xFFE5484D</ID>
+    <ID>MagicNumber:CalendarModels.kt$AgendaKind.Ujian$0xFFFEE2E2</ID>
+    <ID>MagicNumber:CourseController.kt$CourseController$16</ID>
+    <ID>MagicNumber:CourseController.kt$CourseController$7</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFF1858B8</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFF1B7A3E</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFF9A3D00</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFB91C1C</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFDDF5E6</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFEAF3FF</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFEEF4FC</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFFFEBEE</ID>
+    <ID>MagicNumber:CoursesComponents.kt$0xFFFFF0E3</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$16</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$3</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$4</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$5</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$6</ID>
+    <ID>MagicNumber:DocumentController.kt$DocumentController$7</ID>
+    <ID>MagicNumber:Entities.kt$7</ID>
+    <ID>MagicNumber:Grades.kt$Grades$0.011</ID>
+    <ID>MagicNumber:KhsRowParser.kt$KhsRowParser$0.05</ID>
+    <ID>MagicNumber:KhsRowParser.kt$KhsRowParser$3</ID>
+    <ID>MagicNumber:KhsRowParser.kt$KhsRowParser$4</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$3</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$4</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$5</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$6</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$60</ID>
+    <ID>MagicNumber:KrsRowParser.kt$KrsRowParser$7</ID>
+    <ID>MagicNumber:LocalDataArchive.kt$LocalDataArchive$1024.0</ID>
+    <ID>MagicNumber:LocalPasswordHasher.kt$LocalPasswordHasher$16</ID>
+    <ID>MagicNumber:LocalPasswordHasher.kt$LocalPasswordHasher$3</ID>
+    <ID>MagicNumber:LocalPasswordHasher.kt$LocalPasswordHasher$4</ID>
+    <ID>MagicNumber:LoginThrottle.kt$LoginThrottle$15</ID>
+    <ID>MagicNumber:LoginThrottle.kt$LoginThrottle$30</ID>
+    <ID>MagicNumber:LoginThrottle.kt$LoginThrottle$60_000L</ID>
+    <ID>MagicNumber:Motion.kt$160</ID>
+    <ID>MagicNumber:Motion.kt$16f</ID>
+    <ID>MagicNumber:Motion.kt$240</ID>
+    <ID>MagicNumber:Motion.kt$280</ID>
+    <ID>MagicNumber:Motion.kt$50L</ID>
+    <ID>MagicNumber:Motion.kt$7</ID>
+    <ID>MagicNumber:Motion.kt$8</ID>
+    <ID>MagicNumber:PreferencesController.kt$PreferencesController$180</ID>
+    <ID>MagicNumber:PreferencesController.kt$PreferencesController$360</ID>
+    <ID>MagicNumber:PreferencesController.kt$ReminderPreferences.Companion$180</ID>
+    <ID>MagicNumber:ProfileShared.kt$86_400_000L</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$0x7fffffff</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$13L</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$180</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$29L</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$31L</ID>
+    <ID>MagicNumber:ReminderScheduler.kt$ReminderScheduler$60_000L</ID>
+    <ID>MagicNumber:ScheduleCard.kt$3</ID>
+    <ID>MagicNumber:ScheduleCard.kt$4</ID>
+    <ID>MagicNumber:ScheduleCard.kt$5</ID>
+    <ID>MagicNumber:ScheduleCard.kt$6</ID>
+    <ID>MagicNumber:ScheduleRepository.kt$ScheduleRepository$60</ID>
+    <ID>MagicNumber:ScheduleRules.kt$ScheduleRules$60</ID>
+    <ID>MagicNumber:ScheduleRules.kt$ScheduleRules$60.0</ID>
+    <ID>MagicNumber:ScheduleRules.kt$ScheduleRules$7</ID>
+    <ID>MagicNumber:SemesterActiveScreen.kt$50</ID>
+    <ID>MagicNumber:SemesterActiveScreen.kt$60</ID>
+    <ID>MagicNumber:SemesterProgress.kt$7</ID>
+    <ID>MagicNumber:StudentFileStore.kt$StudentFileStore$1024L</ID>
+    <ID>MagicNumber:StudentFileStore.kt$StudentFileStore$180</ID>
+    <ID>MagicNumber:StudentFileStore.kt$StudentFileStore$20L</ID>
+    <ID>MagicNumber:StudentFileStore.kt$StudentFileStore$5</ID>
+    <ID>MagicNumber:StudentFileStore.kt$StudentFileStore$8</ID>
+    <ID>MagicNumber:TaskCard.kt$0xFFEEF2F8</ID>
+    <ID>MagicNumber:TaskCard.kt$3_600_000L</ID>
+    <ID>MagicNumber:TemanKuliahApp.kt$140</ID>
+    <ID>MagicNumber:TemanKuliahApp.kt$260</ID>
+    <ID>MagicNumber:TemanKuliahApp.kt$320</ID>
+    <ID>MagicNumber:TemanKuliahApp.kt$6</ID>
+    <ID>MagicNumber:TemanKuliahApp.kt$8</ID>
+    <ID>MagicNumber:TemanKuliahViewModel.kt$TemanKuliahViewModel$4</ID>
+    <ID>MagicNumber:TkOutlineIcons.kt$TkOutlineIcons$12.8f</ID>
+    <ID>MagicNumber:TkOutlineIcons.kt$TkOutlineIcons$2.4f</ID>
+    <ID>MagicNumber:TkOutlineIcons.kt$TkOutlineIcons$3f</ID>
+    <ID>MagicNumber:TkOutlineIcons.kt$TkOutlineIcons$8.2f</ID>
+    <ID>MagicNumber:UserRepository.kt$UserRepository$1000</ID>
+    <ID>MagicNumber:UserRepository.kt$UserRepository$14</ID>
+    <ID>MagicNumber:UserRepository.kt$UserRepository$4</ID>
+    <ID>MagicNumber:UserRepository.kt$UserRepository$8</ID>
+    <ID>MagicNumber:UserRepository.kt$UserRepository$999</ID>
+    <ID>MatchingDeclarationName:TkBottomNav.kt$TkNavItem</ID>
+    <ID>MaxLineLength:AcademicComponents.kt$Text("Semester $selectedSemester", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = TextPrimary, maxLines = 1)</ID>
+    <ID>MaxLineLength:AcademicComponents.kt$Text(stat.caption, style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.85f), maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:AcademicComponents.kt$Text(summaryOf(sem), style = MaterialTheme.typography.bodySmall, color = TextSecondary, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:AcademicDocumentForms.kt$Text("Bobot: ${if (grade == "-") "" else String.format(Locale.US, "%.2f", point)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))</ID>
+    <ID>MaxLineLength:AcademicDocumentForms.kt$Text("Mutu (SKS × Bobot): ${if (grade == "-" || creditsInt == 0) "" else String.format(Locale.US, "%.2f", mutu)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = TemanKuliahBlue, textAlign = TextAlign.End, modifier = Modifier.weight(1f))</ID>
+    <ID>MaxLineLength:AcademicDocumentPreviewDialog.kt$if</ID>
+    <ID>MaxLineLength:AcademicDocumentProcessorTest.kt$AcademicDocumentProcessorTest$val course1 = CourseEntity(userId = 1, code = "IF1", name = "PBO", credits = 3, gradeLetter = "-", gradePoint = 0.0, semester = 1, classTime = "[T:2, P:1] Senin 08:00-10:30 (R. 301)")</ID>
+    <ID>MaxLineLength:AcademicDocumentProcessorTest.kt$AcademicDocumentProcessorTest$val course2 = CourseEntity(userId = 1, code = "IF2", name = "PBO Lanjut", credits = 3, gradeLetter = "-", gradePoint = 0.0, semester = 1, classTime = "[Teori:2, Praktek:1]")</ID>
+    <ID>MaxLineLength:AcademicDocumentProcessorTest.kt$AcademicDocumentProcessorTest$val course3 = CourseEntity(userId = 1, code = "IF3", name = "PBO Praktik", credits = 3, gradeLetter = "-", gradePoint = 0.0, semester = 1, classTime = "[Teori:1, Praktik:2] Rabu 13:00-15:30")</ID>
+    <ID>MaxLineLength:AcademicOcrReader.kt$AcademicOcrReader$if</ID>
+    <ID>MaxLineLength:AcademicOcrReader.kt$AcademicOcrReader$if (partial) "Hanya $MAX_PDF_PAGES halaman pertama yang diproses. Untuk halaman lain, unggah bagian dokumen secara terpisah." else "Teks PDF dikenali menggunakan OCR di perangkat."</ID>
+    <ID>MaxLineLength:AcademicRowCards.kt$RowActionButton(Icons.Default.Delete, TemanKuliahRedDark, TemanKuliahRedLight, "Hapus ${name.ifBlank { "baris" }}", "btn_delete_${tagPrefix}_$tagKey", onDelete)</ID>
+    <ID>MaxLineLength:AcademicRowCards.kt$RowActionButton(Icons.Default.Edit, TemanKuliahBlue, TemanKuliahBlueLight, "Edit ${name.ifBlank { "baris" }}", "btn_edit_${tagPrefix}_$tagKey", onEdit)</ID>
+    <ID>MaxLineLength:AcademicRowParser.kt$AcademicRowParser$private val SUMMARY_ROW = Regex("(?i)^(?:\\d{1,3}[.)]?\\s*)?(?:total|jumlah|jml|sub\\s*total|kode\\s+kosong)(?:\\s+(?:sks|mutu|nilai|beban\\s+studi))?(?:\\s*[:=]?\\s*(?:[-\\d.,]+(?:\\s+[-\\d.,]+)*))?$")</ID>
+    <ID>MaxLineLength:AcademicTables.kt$Text("Kode kosong", modifier = modifier, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold, color = TemanKuliahOrangeDark, maxLines = 1)</ID>
+    <ID>MaxLineLength:AcademicTables.kt$Text(code, modifier = modifier, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:AddScheduleDialog.kt$Text("Belum ada mata kuliah KRS di Semester $semester, jadi tulis manual.", style = MaterialTheme.typography.bodySmall, color = TextSecondary)</ID>
+    <ID>MaxLineLength:AddScheduleDialog.kt$TkPickerField("Jam selesai", endTime, Icons.Default.Schedule, { picker = PickerTarget.TIME_END }, Modifier.weight(1f), isError = timeOrderInvalid)</ID>
+    <ID>MaxLineLength:AddTaskDialog.kt$Text(if (initialTask == null) "Tambah Tugas" else "Edit Tugas", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = TextPrimary)</ID>
+    <ID>MaxLineLength:BackupArchiveReader.kt$BackupArchiveReader$else</ID>
+    <ID>MaxLineLength:BackupArchiveReader.kt$BackupArchiveReader$if (entryBytes &gt; MAX_ENTRY_BYTES || uncompressedBytes &gt; MAX_ARCHIVE_UNCOMPRESSED) throw IOException("Ukuran cadangan melampaui batas aman.")</ID>
+    <ID>MaxLineLength:BackupArchiveReader.kt$BackupArchiveReader$throw IOException("Cadangan dibuat oleh versi aplikasi yang lebih baru (skema database $schemaVersion; aplikasi ini mendukung sampai $DATABASE_SCHEMA_VERSION). Perbarui aplikasi lalu coba lagi.")</ID>
+    <ID>MaxLineLength:BackupArchiveReader.kt$BackupArchiveReader$val manifest = try { JSONObject(String(manifestJson, Charsets.UTF_8)) } catch (ignored: Exception) { rethrowIfCancellation(ignored); throw IOException("Manifest cadangan rusak.") }</ID>
+    <ID>MaxLineLength:BackupArchiveReader.kt$BackupArchiveReader$val payload = try { JSONObject(String(payloadJson, Charsets.UTF_8)) } catch (ignored: Exception) { rethrowIfCancellation(ignored); throw IOException("Data cadangan tidak dapat dibaca.") }</ID>
+    <ID>MaxLineLength:BackupAssetFiles.kt$BackupAssetFiles$internal fun safeImageExtension(path: String): String</ID>
+    <ID>MaxLineLength:BackupController.kt$BackupController$snackbar.value</ID>
+    <ID>MaxLineLength:BackupController.kt$BackupController$snackbar.value = "Pemulihan berhasil: ${summary.users} akun, ${summary.courses} mata kuliah, ${summary.tasks} tugas, ${summary.projects} proyek, ${summary.academicEvents} kegiatan, ${summary.documents} dokumen."</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (!isValidCourseCredits(c.credits, c.gradeLetter)) throw IOException("$label memiliki SKS ${c.credits}; SKS harus 1–30, atau 0 hanya bila nilai '-'.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (!sc.startTime.matches(TIME_REGEX) || !sc.endTime.matches(TIME_REGEX)) throw IOException("$label memiliki jam yang tidak valid (${sc.startTime.take(10)}–${sc.endTime.take(10)}).")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (c.userId !in userSet) throw IOException("$label merujuk akun (userId ${c.userId}) yang tidak ada di cadangan. Cadangan ditolak; data tidak dipindahkan ke akun lain.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (date.dayOfWeek.value != sc.dayOfWeek) throw IOException("$label bertanggal ${sc.scheduledDate} yang jatuh pada hari ke-${date.dayOfWeek.value}, tetapi hari jadwalnya ${sc.dayOfWeek}.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.courses.map { Triple(it.userId, it.code.trim().uppercase(), it.semester) }.distinct().size != s.courses.size) throw IOException("Kode mata kuliah ganda ditemukan pada semester yang sama.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.courses.map { it.id }.any { it &lt;= 0 } || s.courses.map { it.id }.distinct().size != s.courses.size) throw IOException("ID mata kuliah tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.documents.any { it.id &lt;= 0 || it.userId !in userSet || it.semester &lt; 1 || it.type !in setOf("KRS", "KHS") || it.displayName.isBlank() || !StudentFileStore.isSafeRelativePath(it.storedPath) || !it.storedPath.startsWith("academic_documents/") }) throw IOException("Metadata dokumen tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.documents.map { Triple(it.userId, it.semester, it.type) }.distinct().size != s.documents.size) throw IOException("Duplikasi metadata KRS/KHS untuk semester yang sama.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.documents.map { it.id }.any { it &lt;= 0 } || s.documents.map { it.id }.distinct().size != s.documents.size) throw IOException("ID dokumen tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.events.any { it.userId !in userSet || it.semester &lt; 1 || it.title.isBlank() || it.type !in setOf("Ujian", "Kegiatan Akademik") || it.scheduledAtMillis &lt;= 0L }) throw IOException("Kegiatan akademik tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.events.map { it.id }.any { it &lt;= 0 } || s.events.map { it.id }.distinct().size != s.events.size) throw IOException("ID kegiatan akademik tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.milestones.any { milestone -&gt; milestone.userId !in userSet || milestone.projectId !in projectIds || milestone.title.isBlank() || milestone.deadlineAtMillis &lt;= 0L || projectsById[milestone.projectId]?.userId != milestone.userId }) throw IOException("Tahapan proyek tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.milestones.map { it.id }.any { it &lt;= 0 } || s.milestones.map { it.id }.distinct().size != s.milestones.size) throw IOException("ID tahapan proyek tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.projects.any { it.userId !in userSet || it.semester &lt; 1 || it.title.isBlank() || it.deadlineAtMillis &lt;= 0L || it.progress !in 0..100 }) throw IOException("Data proyek tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.projects.map { it.id }.any { it &lt;= 0 } || s.projects.map { it.id }.distinct().size != s.projects.size) throw IOException("ID proyek tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.schedules.map { it.id }.any { it &lt;= 0 } || s.schedules.map { it.id }.distinct().size != s.schedules.size) throw IOException("ID jadwal tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.tasks.any { it.userId !in userSet || it.title.isBlank() || it.semester &lt; 1 || it.dueAtMillis &lt;= 0L || it.priority !in setOf("Rendah", "Sedang", "Tinggi") || it.status !in setOf(TaskStatus.BELUM, TaskStatus.SEDANG, TaskStatus.SELESAI) || (it.courseId != null &amp;&amp; it.courseId !in (courseIdsByUser[it.userId] ?: emptySet())) }) throw IOException("Data tugas atau relasi mata kuliahnya tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.tasks.any { task -&gt; task.projectId != null &amp;&amp; (task.projectId !in projectIds || projectsById[task.projectId]?.userId != task.userId) }) throw IOException("Relasi tugas dan proyek tidak konsisten.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.tasks.map { it.id }.any { it &lt;= 0 } || s.tasks.map { it.id }.distinct().size != s.tasks.size) throw IOException("ID tugas tidak valid atau ganda.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (s.users.any { it.fullName.isBlank() || it.authType !in setOf(AUTH_GUEST, AUTH_LOCAL) || it.activeSemester &lt; 1 || it.semesterCount &lt; it.activeSemester || (it.profileImagePath != null &amp;&amp; (!StudentFileStore.isSafeRelativePath(it.profileImagePath) || !it.profileImagePath.startsWith("profile_images/"))) || (it.recoveryCodeHash != null &amp;&amp; !LocalPasswordHasher.isEncoded(it.recoveryCodeHash)) }) throw IOException("Profil, jenis akun, atau semester aktif tidak valid.")</ID>
+    <ID>MaxLineLength:BackupSnapshotValidator.kt$BackupSnapshotValidator$if (sc.userId !in userSet) throw IOException("$label merujuk akun (userId ${sc.userId}) yang tidak ada di cadangan. Cadangan ditolak; data tidak dipindahkan ke akun lain.")</ID>
+    <ID>MaxLineLength:CalendarController.kt$CalendarController$repository.addAcademicEvent(AcademicEventEntity(userId = user.id, semester = user.activeSemester, title = title.trim(), description = description.trim(), type = type, scheduledAtMillis = scheduledAtMillis))</ID>
+    <ID>MaxLineLength:CalendarController.kt$CalendarController$repository.updateAcademicEvent(event.copy(title = title.trim(), description = description.trim(), type = type, scheduledAtMillis = scheduledAtMillis))</ID>
+    <ID>MaxLineLength:CourseDialogs.kt$Text("Bobot: ${String.format(Locale.US, "%.1f", point)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))</ID>
+    <ID>MaxLineLength:CourseDialogs.kt$Text("Mutu: ${String.format(Locale.US, "%.1f", mutu)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = TemanKuliahBlue, textAlign = androidx.compose.ui.text.style.TextAlign.End, modifier = Modifier.weight(1f))</ID>
+    <ID>MaxLineLength:CourseScheduleScreen.kt$Text("${storedSemesterSchedules.size} jadwal kuliah (semua pertemuan, termasuk yang berasal dari KRS) akan dihapus dan semua pengingatnya dibatalkan. Kamu masih bisa mengurungkannya sebentar setelah ini.")</ID>
+    <ID>MaxLineLength:CourseScheduleScreen.kt$Text(value, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:CourseScheduleScreen.kt$leadingIcon = { Icon(Icons.Default.CalendarMonth, contentDescription = null, tint = TemanKuliahBlue, modifier = Modifier.size(18.dp)) }</ID>
+    <ID>MaxLineLength:CourseScheduleScreen.kt$leadingIcon = { Icon(Icons.Default.Delete, contentDescription = null, tint = TemanKuliahRedDark, modifier = Modifier.size(18.dp)) }</ID>
+    <ID>MaxLineLength:Daos.kt$ScheduleDao$@Query("UPDATE schedules SET courseName = :newName, semester = :newSemester WHERE userId = :userId AND semester = :oldSemester AND LOWER(TRIM(courseName)) = LOWER(TRIM(:oldName))")</ID>
+    <ID>MaxLineLength:DocumentController.kt$DocumentController$documentWarning = " Namun file dokumennya gagal disimpan (${commitError.message ?: "terjadi kesalahan"}); dokumen sebelumnya dipertahankan."</ID>
+    <ID>MaxLineLength:Entities.kt$return if (name.contains("Praktikum", ignoreCase = true) || name.contains("Praktik", ignoreCase = true) || name.contains("Praktek", ignoreCase = true)) 0 else credits</ID>
+    <ID>MaxLineLength:Entities.kt$return if (name.contains("Praktikum", ignoreCase = true) || name.contains("Praktik", ignoreCase = true) || name.contains("Praktek", ignoreCase = true)) credits else 0</ID>
+    <ID>MaxLineLength:LocalDataArchive.kt$LocalDataArchive$throw IOException("Total data cadangan ${formatMb(totalBytes)} melebihi batas ${formatMb(maxUncompressedBytes)}. Hapus sebagian dokumen atau foto, lalu coba lagi.")</ID>
+    <ID>MaxLineLength:LocalDataArchiveHashTest.kt$LocalDataArchiveHashTest$UserEntity(fullName = "Mahasiswa", nim = "", studyProgram = "Informatika", faculty = "Teknik", university = "Universitas", password = "", isLoggedIn = true, email = "mhs@example.com", authType = AUTH_LOCAL)</ID>
+    <ID>MaxLineLength:LocalDataArchiveHashTest.kt$LocalDataArchiveHashTest$database.courseDao().insertCourse(CourseEntity(userId = id, code = "IF101", name = "Dasar", credits = 3, gradeLetter = "A", gradePoint = 4.0, semester = 1))</ID>
+    <ID>MaxLineLength:LocalDataArchiveHashTest.kt$LocalDataArchiveHashTest$database.courseDao().insertCourse(CourseEntity(userId = id, code = "IF102", name = "Lanjut", credits = 3, gradeLetter = "B", gradePoint = 3.0, semester = 1))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$assertEquals("Manifest harus memakai versi database yang sebenarnya", database.openHelper.writableDatabase.version, manifest.getInt("databaseSchemaVersion"))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$assertTrue("Akun lokal harus tetap bisa masuk setelah dipulihkan", LocalPasswordHasher.verify("rahasia-123", users.getValue("lokal@example.com").password))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$assertTrue("Preview juga harus menolak '$key' = '$value'", runCatching { LocalDataArchive.preview(context, ByteArrayInputStream(tampered)) }.exceptionOrNull() is IOException)</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$assertTrue(runCatching { LocalDataArchive.exportToFile(context, database, target, maxUncompressedBytes = 100_000L) }.exceptionOrNull() is IOException)</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.academicEventDao().insert(AcademicEventEntity(userId = id, semester = 1, title = "Ujian Tengah Semester", description = "", type = "Ujian", scheduledAtMillis = deadline))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.courseDao().insertCourse(CourseEntity(userId = id, code = "IF101", name = "Dasar", credits = 3, gradeLetter = "A", gradePoint = 4.0, semester = 1))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.courseDao().insertCourse(CourseEntity(userId = id, code = "IF201", name = "Belum Ada SKS", credits = 0, gradeLetter = "-", gradePoint = 0.0, semester = 2))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.courseDao().insertCourse(CourseEntity(userId = id, code = "IF301", name = "Rusak", credits = 0, gradeLetter = "A", gradePoint = 4.0, semester = 3))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.scheduleDao().insertSchedule(ScheduleEntity(userId = id, courseName = "Dasar", dayOfWeek = 1, startTime = "08:00", endTime = "09:00", room = "R1", lecturer = "Dosen"))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.taskDao().insert(TaskEntity(userId = id, semester = 1, title = "Makalah", description = "Bab 1", dueAtMillis = deadline, projectId = projectId))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.userDao().insertUser(UserEntity(fullName = "Tamu", nim = "N2", studyProgram = "Prodi", faculty = "Fakultas", university = "Universitas", password = "sisa-lama", email = "tamu@example.com", authType = AUTH_GUEST))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.userDao().insertUser(UserEntity(fullName = "Lokal", nim = "N1", studyProgram = "Prodi", faculty = "Fakultas", university = "Universitas", password = hash, recoveryCodeHash = hash, email = "lokal@example.com", authType = AUTH_LOCAL))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$database.userDao().insertUser(UserEntity(fullName = "Stay", nim = "KEEP", studyProgram = "Prodi", faculty = "Fakultas", university = "Universitas", password = "hash", isLoggedIn = true))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$it.getJSONObject("preferences").put("startDates", JSONObject().put("semester_start_date_3", "2026-08-31").put("semester_start_date_12", "2029-02-05"))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$repository.addCourse(CourseEntity(userId = id, code = "IF203", name = "Bernilai Tanpa SKS", credits = 0, gradeLetter = "A", gradePoint = 4.0, semester = 2))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$repository.addCourse(CourseEntity(userId = id, code = "IF204", name = "SKS Terlalu Besar", credits = 31, gradeLetter = "A", gradePoint = 4.0, semester = 2))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$val id = database.userDao().insertUser(UserEntity(fullName = "Mahasiswa", nim = "NIM-01", studyProgram = "Informatika", faculty = "Teknik", university = "Universitas", password = "test-hash", isLoggedIn = true))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$val id = database.userDao().insertUser(UserEntity(fullName = "Mahasiswa", nim = "NIM-01", studyProgram = "Informatika", faculty = "Teknik", university = "Universitas", password = "test-hash", isLoggedIn = true, profileImagePath = profileImagePath))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$val numeric = rewriteArchive(archive, "data.json") { it.getJSONObject("preferences").put("startDates", JSONObject().put("semester_start_date_1", 20260105)) }</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$val projectId = database.projectDao().insert(ProjectEntity(userId = id, semester = 1, title = "Proyek Basis Data", description = "Rancang schema", deadlineAtMillis = deadline, progress = 35))</ID>
+    <ID>MaxLineLength:LocalDataArchiveTest.kt$LocalDataArchiveTest$val scheduleId = database.scheduleDao().insertSchedule(ScheduleEntity(userId = id, courseName = "Dasar", dayOfWeek = 1, startTime = "08:00", endTime = "09:00", room = "R1", lecturer = "Dosen"))</ID>
+    <ID>MaxLineLength:ProfilePrivacyAboutScreens.kt$Column</ID>
+    <ID>MaxLineLength:ProfilePrivacyAboutScreens.kt$Text("Asisten produktivitas akademik mahasiswa", style = MaterialTheme.typography.bodyMedium, color = TextSecondary, textAlign = TextAlign.Center)</ID>
+    <ID>MaxLineLength:ProfilePrivacyAboutScreens.kt$Text("• Akun: ${summary.users}\n• Mata kuliah: ${summary.courses}\n• Jadwal: ${summary.schedules}\n• Tugas: ${summary.tasks}\n• Proyek kuliah: ${summary.projects}\n• Tahapan proyek: ${summary.milestones}\n• Dokumen KRS/KHS: ${summary.documents}\n• Lampiran: ${summary.attachments}")</ID>
+    <ID>MaxLineLength:ProfilePrivacyAboutScreens.kt$confirmButton = { Button(onClick = viewModel.backupController::restorePendingBackup, enabled = !backupBusy, colors = ButtonDefaults.buttonColors(containerColor = TemanKuliahRedDark)) { Text("Ganti Data Lokal") } }</ID>
+    <ID>MaxLineLength:ProfileScreen.kt$text = if (user.isGuest) "Sesi tamu akan diakhiri. Data tamu tetap tersimpan di perangkat dan terbuka lagi saat Anda masuk sebagai tamu." else "Sesi login akan diakhiri. Profil, nilai, jadwal, tugas, foto, dan dokumen lokal tetap tersimpan di perangkat."</ID>
+    <ID>MaxLineLength:ProfileSettingsScreens.kt$Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextPrimary, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:ProfileSettingsScreens.kt$if</ID>
+    <ID>MaxLineLength:ProfileSettingsScreens.kt$val</ID>
+    <ID>MaxLineLength:ProfileSettingsScreens.kt$val notificationsAllowed = Build.VERSION.SDK_INT &lt; 33 || ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED</ID>
+    <ID>MaxLineLength:ProjectCard.kt$text = { Text(if (milestones.isEmpty()) "Tahapan proyek" else "Tahapan proyek (${milestones.count { it.isCompleted }}/${milestones.size})", color = TextPrimary) }</ID>
+    <ID>MaxLineLength:ProjectController.kt$ProjectController$repository.addProject(ProjectEntity(userId = user.id, semester = user.activeSemester, title = title.trim(), description = description.trim(), deadlineAtMillis = deadlineAtMillis, progress = progress))</ID>
+    <ID>MaxLineLength:ProjectController.kt$ProjectController$repository.addProjectMilestone(ProjectMilestoneEntity(userId = user.id, projectId = project.id, title = title.trim(), deadlineAtMillis = deadlineAtMillis))</ID>
+    <ID>MaxLineLength:ProjectController.kt$ProjectController$repository.updateProject(project.copy(title = title.trim(), description = description.trim(), deadlineAtMillis = deadlineAtMillis, progress = progress))</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$IconButton(onClick = { onDelete(item) }) { Icon(Icons.Default.DeleteOutline, contentDescription = "Hapus ${item.title}", tint = TemanKuliahRedDark) }</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$OutlinedTextField(title, { title = it; error = null }, label = { Text("Nama tahapan baru") }, singleLine = true, isError = titleInvalid, supportingText = if (titleInvalid) { { Text(error.orEmpty()) } } else null, modifier = Modifier.fillMaxWidth())</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$Text("Centang tugas untuk menghubungkannya. Satu tugas hanya dapat dikaitkan ke satu proyek.", style = MaterialTheme.typography.bodySmall, color = TextSecondary)</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$Text(if (initial == null) "Tambah Proyek" else "Edit Proyek", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = TextPrimary)</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$if (eligibleTasks.isEmpty()) Text("Belum ada tugas yang bisa dihubungkan pada semester aktif.", color = TextSecondary, style = MaterialTheme.typography.bodySmall)</ID>
+    <ID>MaxLineLength:ProjectDialogs.kt$}</ID>
+    <ID>MaxLineLength:ProjectFilterBottomSheet.kt$Text("Saring proyek berdasarkan progres, tenggat, dan mata kuliah terkait.", style = MaterialTheme.typography.bodySmall, color = TextSecondary)</ID>
+    <ID>MaxLineLength:ReminderRescheduleReceiverTest.kt$ReminderRescheduleReceiverTest$UserEntity(fullName = name, nim = nim, studyProgram = "Informatika", faculty = "Teknik", university = "USP", password = "hash", isLoggedIn = loggedIn)</ID>
+    <ID>MaxLineLength:ReminderScheduler.kt$ReminderRescheduleReceiver$if (intent.action !in setOf(Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_MY_PACKAGE_REPLACED, Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED, "android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED")) return</ID>
+    <ID>MaxLineLength:ReminderScheduler.kt$ReminderScheduler$schedule(context, "class", schedule.id, "Kuliah ${schedule.courseName}", "Mulai pukul ${schedule.startTime} ($lead) · ${schedule.room.ifBlank { "ruangan belum diatur" }}", next)</ID>
+    <ID>MaxLineLength:ReminderScheduler.kt$ReminderScheduler$val openPending = PendingIntent.getActivity(context, requestCode(kind, id), openIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)</ID>
+    <ID>MaxLineLength:ReminderSchedulerTest.kt$ReminderSchedulerTest$UserEntity(fullName = name, nim = nim, studyProgram = "Informatika", faculty = "Teknik", university = "USP", password = password, isLoggedIn = loggedIn, email = email)</ID>
+    <ID>MaxLineLength:ReminderSchedulerTest.kt$ReminderSchedulerTest$assertTrue("Tidak boleh ada notifikasi saat notifyIfWindowOpen=false", shadowOf(notifManager).allNotifications.none { it.extras.getString(android.app.Notification.EXTRA_TITLE)?.contains("Tugas Lain") == true })</ID>
+    <ID>MaxLineLength:ReminderSchedulerTest.kt$ReminderSchedulerTest$assertTrue("Tidak boleh ada notifikasi untuk deadline yang sudah lewat", shadowOf(notifManager).allNotifications.none { it.extras.getString(android.app.Notification.EXTRA_TITLE)?.contains("Tugas Terlambat") == true })</ID>
+    <ID>MaxLineLength:ScheduleCard.kt$Text("${schedule.courseName} berulang setiap ${dayNameOf(dayOfWeekOf(schedule))} ($meetingCount pertemuan). Pertemuan terdekat: $dateLabel.")</ID>
+    <ID>MaxLineLength:ScheduleRules.kt$ScheduleRules$}</ID>
+    <ID>MaxLineLength:SemesterActiveScreen.kt$Text("Target SKS kelulusan", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = TextPrimary, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:SemesterActiveScreen.kt$Text(caption, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = captionColor, maxLines = 2, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:SemesterActiveScreen.kt$Text(value, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = TextPrimary, maxLines = 1, overflow = TextOverflow.Ellipsis)</ID>
+    <ID>MaxLineLength:SharedRulesTest.kt$SharedRulesTest$assertEquals(15, ScheduleEntity(userId = 1, courseName = "X", dayOfWeek = 1, startTime = "08:00", endTime = "09:00", room = "", lecturer = "").reminderMinutesBefore)</ID>
+    <ID>MaxLineLength:StudentFileStore.kt$StudentFileStore$val directory = File(context.filesDir, "profile_images").apply { if (!exists() &amp;&amp; !mkdirs()) throw IOException("Tidak dapat membuat folder foto profil.") }</ID>
+    <ID>MaxLineLength:TaskController.kt$TaskController$ReminderScheduler.scheduleTask(application, updated, reminderPreferences.value.reminderMinutes, notifyIfWindowOpen = task.dueAtMillis != dueAtMillis)</ID>
+    <ID>MaxLineLength:TaskController.kt$TaskController$val task = TaskEntity(userId = user.id, semester = user.activeSemester, title = title, description = description, dueAtMillis = dueAtMillis, priority = priority, courseId = courseId)</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$(slideInHorizontally(tween(280, easing = FastOutSlowInEasing)) { dir * it / 8 } + fadeIn(tween(240, delayMillis = 30)))</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$2 -&gt; TasksScreen(viewModel = viewModel, modifier = Modifier.padding(innerPadding), onShowProjectsChange = { tasksShowingProjects = it })</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$3</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$4</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$DialogType.AddTask -&gt; AddTaskDialog(courses = allCourses, semester = user.activeSemester, onDismiss = viewModel::closeDialog, onConfirm = { title, description, deadline, priority, courseId -&gt; viewModel.taskController.addTask(title, description, deadline, priority, courseId) })</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$DialogType.StudyTarget -&gt; StudyTargetDialog(initialTarget = targetCredits, onDismiss = viewModel::closeDialog, onSave = { viewModel.preferencesController.setTargetCredits(it); viewModel.closeDialog() })</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$is DialogType.EditCourseGrade -&gt; EditCourseGradeDialog(course = dialog.course, onDismiss = viewModel::closeDialog, onSaveGrade = { viewModel.courseController.updateCourseGrade(dialog.course, it); viewModel.closeDialog() })</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$is DialogType.EditProfile -&gt; EditProfileDialog(user = dialog.user, errorMessage = profileEditError, onDismiss = viewModel::closeDialog, onSave = { fullName, nim, program, faculty, university -&gt; viewModel.profileController.updateProfile(fullName, nim, program, faculty, university) })</ID>
+    <ID>MaxLineLength:TemanKuliahApp.kt$is DialogType.EditTask -&gt; AddTaskDialog(initialTask = dialog.task, courses = allCourses, semester = dialog.task.semester, onDismiss = viewModel::closeDialog, onConfirm = { title, description, deadline, priority, courseId -&gt; viewModel.taskController.updateTask(dialog.task, title, description, deadline, priority, courseId) })</ID>
+    <ID>MaxLineLength:TemanKuliahViewModel.kt$TemanKuliahViewModel$val activeSemester: StateFlow&lt;Int&gt; = currentUser.map { (it?.activeSemester ?: 1).coerceAtLeast(1) }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 1)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M1.9 17.2A1.9 1.9 0 1 0 5.7 17.2A1.9 1.9 0 1 0 1.9 17.2ZM6.8 12A1.9 1.9 0 1 0 10.6 12A1.9 1.9 0 1 0 6.8 12ZM10.6 15.3A1.9 1.9 0 1 0 14.4 15.3A1.9 1.9 0 1 0 10.6 15.3ZM18.4 7A1.9 1.9 0 1 0 22.2 7A1.9 1.9 0 1 0 18.4 7Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M10 2.6H14A1.8 1.8 0 0 1 15.8 4.4V5.2A1.8 1.8 0 0 1 14 7H10A1.8 1.8 0 0 1 8.2 5.2V4.4A1.8 1.8 0 0 1 10 2.6ZM11.1 4.8A0.9 0.9 0 1 0 12.9 4.8A0.9 0.9 0 1 0 11.1 4.8Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 2.4a7.6 7.6 0 0 1 7.6 7.6c0 5.3-5.6 10.2-6.9 11.3a1.1 1.1 0 0 1-1.4 0C10 20.2 4.4 15.3 4.4 10A7.6 7.6 0 0 1 12 2.4ZM9.2 10A2.8 2.8 0 1 0 14.8 10A2.8 2.8 0 1 0 9.2 10Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 2.4a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2ZM10.65 7.9A1.35 1.35 0 1 0 13.35 7.9A1.35 1.35 0 1 0 10.65 7.9ZM12 10.6H12A1.1 1.1 0 0 1 13.1 11.7V15.9A1.1 1.1 0 0 1 12 17H12A1.1 1.1 0 0 1 10.9 15.9V11.7A1.1 1.1 0 0 1 12 10.6Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 2.6a9.4 9.4 0 1 0 0 18.8c1.3 0 2.1-1 2.1-2 0-.6-.3-1.1-.6-1.5-.4-.5-.6-.9-.6-1.5 0-1.1.9-2 2-2h2.4a3.4 3.4 0 0 0 3.4-3.4C20.7 6.3 16.9 2.6 12 2.6ZM5.9 11.6A1.4 1.4 0 1 0 8.7 11.6A1.4 1.4 0 1 0 5.9 11.6ZM8.2 7.3A1.4 1.4 0 1 0 11 7.3A1.4 1.4 0 1 0 8.2 7.3ZM13.2 7.1A1.4 1.4 0 1 0 16 7.1A1.4 1.4 0 1 0 13.2 7.1ZM16.2 10.4A1.3 1.3 0 1 0 18.8 10.4A1.3 1.3 0 1 0 16.2 10.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 2.6l7.6 2.8v6c0 4.6-3.1 8.4-7.6 10-4.5-1.6-7.6-5.4-7.6-10v-6L12 2.6ZM7.9 12.1L9.3 10.7 11.1 12.5 14.8 8.8 16.2 10.2 11.1 15.3Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 2.8a1.4 1.4 0 0 1 1.4 1.4v.5c2.9.7 4.8 3.2 4.8 6.2v3.6l1.6 2.2a1 1 0 0 1-.8 1.6H5a1 1 0 0 1-.8-1.6l1.6-2.2v-3.6c0-3 1.9-5.5 4.8-6.2v-.5A1.4 1.4 0 0 1 12 2.8Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 7H12A1.1 1.1 0 0 1 13.1 8.1V12.1A1.1 1.1 0 0 1 12 13.2H12A1.1 1.1 0 0 1 10.9 12.1V8.1A1.1 1.1 0 0 1 12 7ZM10.7 16.3A1.3 1.3 0 1 0 13.3 16.3A1.3 1.3 0 1 0 10.7 16.3Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M12.7 7A2.3 2.3 0 1 0 17.3 7A2.3 2.3 0 1 0 12.7 7ZM6.7 12A2.3 2.3 0 1 0 11.3 12A2.3 2.3 0 1 0 6.7 12ZM13.2 17A2.3 2.3 0 1 0 17.8 17A2.3 2.3 0 1 0 13.2 17Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M19.2 10.27L21.61 10.71L21.61 13.29L19.2 13.73L18.31 15.87L19.71 17.88L17.88 19.71L15.87 18.31L13.73 19.2L13.29 21.61L10.71 21.61L10.27 19.2L8.13 18.31L6.12 19.71L4.29 17.88L5.69 15.87L4.8 13.73L2.39 13.29L2.39 10.71L4.8 10.27L5.69 8.13L4.29 6.12L6.12 4.29L8.13 5.69L10.27 4.8L10.71 2.39L13.29 2.39L13.73 4.8L15.87 5.69L17.88 4.29L19.71 6.12L18.31 8.13ZM8.9 12A3.1 3.1 0 1 0 15.1 12A3.1 3.1 0 1 0 8.9 12Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H5v-2h6v2zm0-4H5v-2h6v2zm0-4H5V7h6v2zm4.5 9L12 14.5l1.41-1.41 2.09 2.09 4.59-4.59L21.5 12l-6 6z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M4.2 5H14.4A1.2 1.2 0 0 1 15.6 6.2V6.6A1.2 1.2 0 0 1 14.4 7.8H4.2A1.2 1.2 0 0 1 3 6.6V6.2A1.2 1.2 0 0 1 4.2 5ZM8.4 5H8.8A1.2 1.2 0 0 1 10 6.2V17.2A1.2 1.2 0 0 1 8.8 18.4H8.4A1.2 1.2 0 0 1 7.2 17.2V6.2A1.2 1.2 0 0 1 8.4 5ZM15.4 11H19.8A1.2 1.2 0 0 1 21 12.2V12.3A1.2 1.2 0 0 1 19.8 13.5H15.4A1.2 1.2 0 0 1 14.2 12.3V12.2A1.2 1.2 0 0 1 15.4 11ZM17.6 11H17.6A1.2 1.2 0 0 1 18.8 12.2V17.2A1.2 1.2 0 0 1 17.6 18.4H17.6A1.2 1.2 0 0 1 16.4 17.2V12.2A1.2 1.2 0 0 1 17.6 11Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M5.7 6H18.3A1.2 1.2 0 0 1 19.5 7.2V7.2A1.2 1.2 0 0 1 18.3 8.4H5.7A1.2 1.2 0 0 1 4.5 7.2V7.2A1.2 1.2 0 0 1 5.7 6ZM10.1 3H13.9A1.1 1.1 0 0 1 15 4.1V4.5A1.1 1.1 0 0 1 13.9 5.6H10.1A1.1 1.1 0 0 1 9 4.5V4.1A1.1 1.1 0 0 1 10.1 3Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M5.8 3.5H8.4A2.3 2.3 0 0 1 10.7 5.8V10.4A2.3 2.3 0 0 1 8.4 12.7H5.8A2.3 2.3 0 0 1 3.5 10.4V5.8A2.3 2.3 0 0 1 5.8 3.5ZM15.6 3.5H18.2A2.3 2.3 0 0 1 20.5 5.8V6.8A2.3 2.3 0 0 1 18.2 9.1H15.6A2.3 2.3 0 0 1 13.3 6.8V5.8A2.3 2.3 0 0 1 15.6 3.5ZM5.8 15.3H8.4A2.3 2.3 0 0 1 10.7 17.6V18.2A2.3 2.3 0 0 1 8.4 20.5H5.8A2.3 2.3 0 0 1 3.5 18.2V17.6A2.3 2.3 0 0 1 5.8 15.3ZM15.6 11.7H18.2A2.3 2.3 0 0 1 20.5 14V18.2A2.3 2.3 0 0 1 18.2 20.5H15.6A2.3 2.3 0 0 1 13.3 18.2V14A2.3 2.3 0 0 1 15.6 11.7Z")</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.2 6.8H17.8A3.4 3.4 0 0 1 21.2 10.2V16.6A3.4 3.4 0 0 1 17.8 20H6.2A3.4 3.4 0 0 1 2.8 16.6V10.2A3.4 3.4 0 0 1 6.2 6.8ZM7.9 13.4A4.1 4.1 0 1 0 16.1 13.4A4.1 4.1 0 1 0 7.9 13.4ZM9.8 13.4A2.2 2.2 0 1 0 14.2 13.4A2.2 2.2 0 1 0 9.8 13.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.2 9.8h11.6l-.8 9.3a2.1 2.1 0 0 1-2.1 1.9H9.1A2.1 2.1 0 0 1 7 19.1L6.2 9.8ZM10.4 12H10.4A0.8 0.8 0 0 1 11.2 12.8V16.8A0.8 0.8 0 0 1 10.4 17.6H10.4A0.8 0.8 0 0 1 9.6 16.8V12.8A0.8 0.8 0 0 1 10.4 12ZM13.6 12H13.6A0.8 0.8 0 0 1 14.4 12.8V16.8A0.8 0.8 0 0 1 13.6 17.6H13.6A0.8 0.8 0 0 1 12.8 16.8V12.8A0.8 0.8 0 0 1 13.6 12Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.4 4.4H17.6A3.4 3.4 0 0 1 21 7.8V16.2A3.4 3.4 0 0 1 17.6 19.6H6.4A3.4 3.4 0 0 1 3 16.2V7.8A3.4 3.4 0 0 1 6.4 4.4ZM7 6.9H17A1.5 1.5 0 0 1 18.5 8.4V15.6A1.5 1.5 0 0 1 17 17.1H7A1.5 1.5 0 0 1 5.5 15.6V8.4A1.5 1.5 0 0 1 7 6.9ZM5.5 17.1V15.2l3.4-3.8 3.2 3.1 2.6-2.8 3.8 4.1v1.3H5.5ZM7.5 9.6A1.5 1.5 0 1 0 10.5 9.6A1.5 1.5 0 1 0 7.5 9.6Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.4 5H17.6A3.4 3.4 0 0 1 21 8.4V15.6A3.4 3.4 0 0 1 17.6 19H6.4A3.4 3.4 0 0 1 3 15.6V8.4A3.4 3.4 0 0 1 6.4 5ZM6.7 10.7A1.9 1.9 0 1 0 10.5 10.7A1.9 1.9 0 1 0 6.7 10.7ZM5.8 16.4c.3-1.8 1.5-2.6 2.8-2.6s2.5.8 2.8 2.6ZM13.85 9.8H17.15A0.85 0.85 0 0 1 18 10.65V10.65A0.85 0.85 0 0 1 17.15 11.5H13.85A0.85 0.85 0 0 1 13 10.65V10.65A0.85 0.85 0 0 1 13.85 9.8ZM13.85 13.2H15.75A0.85 0.85 0 0 1 16.6 14.05V14.05A0.85 0.85 0 0 1 15.75 14.9H13.85A0.85 0.85 0 0 1 13 14.05V14.05A0.85 0.85 0 0 1 13.85 13.2Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.6 3.8H17.4A3.6 3.6 0 0 1 21 7.4V16.6A3.6 3.6 0 0 1 17.4 20.2H6.6A3.6 3.6 0 0 1 3 16.6V7.4A3.6 3.6 0 0 1 6.6 3.8ZM6.6 6.4H7.6A1.1 1.1 0 0 1 8.7 7.5V13.3A1.1 1.1 0 0 1 7.6 14.4H6.6A1.1 1.1 0 0 1 5.5 13.3V7.5A1.1 1.1 0 0 1 6.6 6.4ZM11.5 6.4H12.5A1.1 1.1 0 0 1 13.6 7.5V16.5A1.1 1.1 0 0 1 12.5 17.6H11.5A1.1 1.1 0 0 1 10.4 16.5V7.5A1.1 1.1 0 0 1 11.5 6.4ZM16.4 6.4H17.4A1.1 1.1 0 0 1 18.5 7.5V10.9A1.1 1.1 0 0 1 17.4 12H16.4A1.1 1.1 0 0 1 15.3 10.9V7.5A1.1 1.1 0 0 1 16.4 6.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.8 2.8h6.6l5.8 5.8v10.6a2.4 2.4 0 0 1-2.4 2.4H6.8a2.4 2.4 0 0 1-2.4-2.4V5.2a2.4 2.4 0 0 1 2.4-2.4ZM12 10.2l3.4 3.4h-2.4v3.6h-2v-3.6H8.6L12 10.2Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.8 2.8h6.6l5.8 5.8v10.6a2.4 2.4 0 0 1-2.4 2.4H6.8a2.4 2.4 0 0 1-2.4-2.4V5.2a2.4 2.4 0 0 1 2.4-2.4ZM12 17l3.4-3.4h-2.4V10h-2v3.6H8.6L12 17Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M6.8 2.8h6.6l5.8 5.8v10.6a2.4 2.4 0 0 1-2.4 2.4H6.8a2.4 2.4 0 0 1-2.4-2.4V5.2a2.4 2.4 0 0 1 2.4-2.4ZM8.95 12H15.05A0.95 0.95 0 0 1 16 12.95V12.95A0.95 0.95 0 0 1 15.05 13.9H8.95A0.95 0.95 0 0 1 8 12.95V12.95A0.95 0.95 0 0 1 8.95 12ZM8.95 15.6H12.65A0.95 0.95 0 0 1 13.6 16.55V16.55A0.95 0.95 0 0 1 12.65 17.5H8.95A0.95 0.95 0 0 1 8 16.55V16.55A0.95 0.95 0 0 1 8.95 15.6Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.2 4.6H16.8A4.2 4.2 0 0 1 21 8.8V16.8A4.2 4.2 0 0 1 16.8 21H7.2A4.2 4.2 0 0 1 3 16.8V8.8A4.2 4.2 0 0 1 7.2 4.6ZM7.1 10.2H16.9A1.7 1.7 0 0 1 18.6 11.9V16.9A1.7 1.7 0 0 1 16.9 18.6H7.1A1.7 1.7 0 0 1 5.4 16.9V11.9A1.7 1.7 0 0 1 7.1 10.2Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.2 4.6H16.8A4.2 4.2 0 0 1 21 8.8V16.8A4.2 4.2 0 0 1 16.8 21H7.2A4.2 4.2 0 0 1 3 16.8V8.8A4.2 4.2 0 0 1 7.2 4.6ZM7.1 10.2H16.9A1.7 1.7 0 0 1 18.6 11.9V16.9A1.7 1.7 0 0 1 16.9 18.6H7.1A1.7 1.7 0 0 1 5.4 16.9V11.9A1.7 1.7 0 0 1 7.1 10.2ZM7.6 13.4A1.1 1.1 0 1 0 9.8 13.4A1.1 1.1 0 1 0 7.6 13.4ZM10.9 13.4A1.1 1.1 0 1 0 13.1 13.4A1.1 1.1 0 1 0 10.9 13.4ZM14.2 13.4A1.1 1.1 0 1 0 16.4 13.4A1.1 1.1 0 1 0 14.2 13.4ZM7.6 16.2A1.1 1.1 0 1 0 9.8 16.2A1.1 1.1 0 1 0 7.6 16.2ZM10.9 16.2A1.1 1.1 0 1 0 13.1 16.2A1.1 1.1 0 1 0 10.9 16.2Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.2 4.6H16.8A4.2 4.2 0 0 1 21 8.8V16.8A4.2 4.2 0 0 1 16.8 21H7.2A4.2 4.2 0 0 1 3 16.8V8.8A4.2 4.2 0 0 1 7.2 4.6ZM7.1 10.2H16.9A1.7 1.7 0 0 1 18.6 11.9V16.9A1.7 1.7 0 0 1 16.9 18.6H7.1A1.7 1.7 0 0 1 5.4 16.9V11.9A1.7 1.7 0 0 1 7.1 10.2ZM9.7 12.4H11.3A1.1 1.1 0 0 1 12.4 13.5V15.1A1.1 1.1 0 0 1 11.3 16.2H9.7A1.1 1.1 0 0 1 8.6 15.1V13.5A1.1 1.1 0 0 1 9.7 12.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.2 4.6H16.8A4.2 4.2 0 0 1 21 8.8V16.8A4.2 4.2 0 0 1 16.8 21H7.2A4.2 4.2 0 0 1 3 16.8V8.8A4.2 4.2 0 0 1 7.2 4.6ZM7.1 10.2H16.9A1.7 1.7 0 0 1 18.6 11.9V16.9A1.7 1.7 0 0 1 16.9 18.6H7.1A1.7 1.7 0 0 1 5.4 16.9V11.9A1.7 1.7 0 0 1 7.1 10.2ZM9.9 14.4A2.1 2.1 0 1 0 14.1 14.4A2.1 2.1 0 1 0 9.9 14.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.6 3H16.4A3.6 3.6 0 0 1 20 6.6V17.4A3.6 3.6 0 0 1 16.4 21H7.6A3.6 3.6 0 0 1 4 17.4V6.6A3.6 3.6 0 0 1 7.6 3ZM7.7 5.6H16.3A1.1 1.1 0 0 1 17.4 6.7V8.1A1.1 1.1 0 0 1 16.3 9.2H7.7A1.1 1.1 0 0 1 6.6 8.1V6.7A1.1 1.1 0 0 1 7.7 5.6ZM7.6 11.4H8.4A0.8 0.8 0 0 1 9.2 12.2V13A0.8 0.8 0 0 1 8.4 13.8H7.6A0.8 0.8 0 0 1 6.8 13V12.2A0.8 0.8 0 0 1 7.6 11.4ZM11.6 11.4H12.4A0.8 0.8 0 0 1 13.2 12.2V13A0.8 0.8 0 0 1 12.4 13.8H11.6A0.8 0.8 0 0 1 10.8 13V12.2A0.8 0.8 0 0 1 11.6 11.4ZM15.6 11.4H16.4A0.8 0.8 0 0 1 17.2 12.2V13A0.8 0.8 0 0 1 16.4 13.8H15.6A0.8 0.8 0 0 1 14.8 13V12.2A0.8 0.8 0 0 1 15.6 11.4ZM7.6 15.6H8.4A0.8 0.8 0 0 1 9.2 16.4V17.2A0.8 0.8 0 0 1 8.4 18H7.6A0.8 0.8 0 0 1 6.8 17.2V16.4A0.8 0.8 0 0 1 7.6 15.6ZM11.6 15.6H12.4A0.8 0.8 0 0 1 13.2 16.4V17.2A0.8 0.8 0 0 1 12.4 18H11.6A0.8 0.8 0 0 1 10.8 17.2V16.4A0.8 0.8 0 0 1 11.6 15.6ZM15.6 15.6H16.4A0.8 0.8 0 0 1 17.2 16.4V17.2A0.8 0.8 0 0 1 16.4 18H15.6A0.8 0.8 0 0 1 14.8 17.2V16.4A0.8 0.8 0 0 1 15.6 15.6Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.7 4.6H16.3A3.2 3.2 0 0 1 19.5 7.8V18.4A3.2 3.2 0 0 1 16.3 21.6H7.7A3.2 3.2 0 0 1 4.5 18.4V7.8A3.2 3.2 0 0 1 7.7 4.6ZM12 9.4H12A1.1 1.1 0 0 1 13.1 10.5V13.5A1.1 1.1 0 0 1 12 14.6H12A1.1 1.1 0 0 1 10.9 13.5V10.5A1.1 1.1 0 0 1 12 9.4ZM10.75 17.4A1.25 1.25 0 1 0 13.25 17.4A1.25 1.25 0 1 0 10.75 17.4Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.7 4.6H16.3A3.2 3.2 0 0 1 19.5 7.8V18.4A3.2 3.2 0 0 1 16.3 21.6H7.7A3.2 3.2 0 0 1 4.5 18.4V7.8A3.2 3.2 0 0 1 7.7 4.6ZM8.95 10.4H15.05A0.95 0.95 0 0 1 16 11.35V11.35A0.95 0.95 0 0 1 15.05 12.3H8.95A0.95 0.95 0 0 1 8 11.35V11.35A0.95 0.95 0 0 1 8.95 10.4ZM8.95 14.2H12.65A0.95 0.95 0 0 1 13.6 15.15V15.15A0.95 0.95 0 0 1 12.65 16.1H8.95A0.95 0.95 0 0 1 8 15.15V15.15A0.95 0.95 0 0 1 8.95 14.2Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkIcons.kt$TkIcons$Part("M7.8 10.4H16.2A3.2 3.2 0 0 1 19.4 13.6V18A3.2 3.2 0 0 1 16.2 21.2H7.8A3.2 3.2 0 0 1 4.6 18V13.6A3.2 3.2 0 0 1 7.8 10.4ZM12 12.8a1.8 1.8 0 0 1 1 3.3v1.9a1 1 0 0 1-2 0v-1.9a1.8 1.8 0 0 1 1-3.3Z", evenOdd = true)</ID>
+    <ID>MaxLineLength:TkOutlineIcons.kt$TkOutlineIcons$"M12 3.5c-4.7 0-8.5 3.6-8.5 8.2 0 4.4 3.5 7.8 7.7 7.8 1.2 0 1.9-.8 1.9-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-.9.7-1.6 1.6-1.6H17c2 0 3.5-1.4 3.5-3.3 0-3.2-3.6-6.7-8.5-6.7Z"</ID>
+    <ID>MaxLineLength:TkPickers.kt$Instant.ofEpochMilli(it).atZone(ZoneOffset.UTC).toLocalDate().format(headlineFormatter).replaceFirstChar { c -&gt; c.titlecase(IndonesianLocale) }</ID>
+    <ID>MaxLineLength:TkPickers.kt$title = { Text(title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 20.dp)) }</ID>
+    <ID>MaxLineLength:TodayWidgetDataTest.kt$TodayWidgetDataTest$assertEquals("08.00–09.40 · Ruang belum diatur", TodayWidgetData.pickNextClass(listOf(lecture("08:00", "09:40", room = "")), LocalTime.of(7, 0)).first?.detail)</ID>
+    <ID>MaxLineLength:TranscriptBuilder.kt$TranscriptHtml$sb.append("&lt;th class=\"n\"&gt;No&lt;/th&gt;&lt;th&gt;Kode&lt;/th&gt;&lt;th&gt;Mata Kuliah&lt;/th&gt;&lt;th class=\"n\"&gt;SKS&lt;/th&gt;&lt;th class=\"n\"&gt;Nilai&lt;/th&gt;&lt;th class=\"n\"&gt;Bobot&lt;/th&gt;&lt;th class=\"n\"&gt;Mutu&lt;/th&gt;")</ID>
+    <ID>NestedBlockDepth:AcademicOcrReader.kt$AcademicOcrReader$private fun extractPdf(file: File): Extraction</ID>
+    <ID>NestedBlockDepth:AcademicRowParser.kt$AcademicRowParser$fun findAcademicRows(text: String, isKrs: Boolean = false): List&lt;AcademicRow&gt;</ID>
+    <ID>NestedBlockDepth:AcademicRowParser.kt$AcademicRowParser$private fun parseDelimited(rawCells: List&lt;String&gt;, isKrs: Boolean): AcademicRow?</ID>
+    <ID>NestedBlockDepth:BackupArchiveReader.kt$BackupArchiveReader$private fun readSnapshot(input: InputStream, workDir: File): Snapshot</ID>
+    <ID>NestedBlockDepth:KhsRowParser.kt$KhsRowParser$internal fun gradeFromNumbers(credits: Int, decimals: List&lt;Double&gt;): String</ID>
+    <ID>NestedBlockDepth:KhsRowParser.kt$KhsRowParser$internal fun parseKhsFreeText(line: String): AcademicRow?</ID>
+    <ID>NestedBlockDepth:LocalDataArchiveTest.kt$LocalDataArchiveTest$private fun rewriteArchive(archive: ByteArray, jsonEntry: String, transform: (JSONObject) -&gt; Unit): ByteArray</ID>
+    <ID>ReturnCount:AcademicNameText.kt$AcademicNameText$internal fun splitNameAndLecturer(text: String): Pair&lt;String, String&gt;</ID>
+    <ID>ReturnCount:AcademicReconciler.kt$AcademicReconciler$fun parseDecimal(token: String): Double?</ID>
+    <ID>ReturnCount:AcademicReconciler.kt$AcademicReconciler$fun parseKhsTail(tokens: List&lt;String&gt;): KhsTail?</ID>
+    <ID>ReturnCount:AcademicReconciler.kt$AcademicReconciler$fun pickKrsNumberRun(tokens: List&lt;String&gt;, sksColumn: Boolean? = null): KrsRun?</ID>
+    <ID>ReturnCount:AcademicReconciler.kt$AcademicReconciler$fun repairKrsCredits(theory: Int, practice: Int, printed: Int?): KrsCredits</ID>
+    <ID>ReturnCount:AcademicRowCards.kt$internal fun khsRowIssue(line: KhsLine): RowIssue?</ID>
+    <ID>ReturnCount:AcademicRowCards.kt$internal fun krsRowIssue(line: KrsLine): RowIssue?</ID>
+    <ID>ReturnCount:AcademicRowParser.kt$AcademicRowParser$private fun isHeaderLine(lower: String): Boolean</ID>
+    <ID>ReturnCount:AcademicScheduleText.kt$AcademicScheduleText$fun addMinutes(time: String, minutes: Int): String</ID>
+    <ID>ReturnCount:AcademicScheduleText.kt$AcademicScheduleText$fun minutesBetween(start: String, end: String): Int</ID>
+    <ID>ReturnCount:AcademicScheduleText.kt$AcademicScheduleText$internal fun extractSchedule(input: String): Pair&lt;String, String&gt;</ID>
+    <ID>ReturnCount:AcademicScheduleText.kt$AcademicScheduleText$internal fun parseLamaMinutes(text: String): Int</ID>
+    <ID>ReturnCount:BackupSnapshotValidator.kt$BackupSnapshotValidator$internal fun semesterStartDateProblem(key: String, value: String): String?</ID>
+    <ID>ReturnCount:DocumentController.kt$DocumentController$fun savePreviewCourses(replaceExisting: Boolean, customStartDateIso: String? = null)</ID>
+    <ID>ReturnCount:KhsRowParser.kt$KhsRowParser$internal fun gradeFromNumbers(credits: Int, decimals: List&lt;Double&gt;): String</ID>
+    <ID>ReturnCount:KhsRowParser.kt$KhsRowParser$internal fun parseKhsByTail(line: String): AcademicRow?</ID>
+    <ID>ReturnCount:KhsRowParser.kt$KhsRowParser$internal fun parseKhsFreeText(line: String): AcademicRow?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$fun parseColumnSks(value: String?): Int?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$internal fun detectKrsSksColumn(text: String): Boolean?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$internal fun krsContinuation(previous: AcademicRow, rawLine: String): AcademicRow?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$internal fun parseKrsColumns(line: String, sksColumn: Boolean? = null): AcademicRow?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$internal fun parseKrsFreeText(line: String): AcademicRow?</ID>
+    <ID>ReturnCount:KrsRowParser.kt$KrsRowParser$private fun extractKrsNameSksLecturer(middleText: String, sksColumn: Boolean? = null): KrsExtractedMiddle?</ID>
+    <ID>ReturnCount:LocalDataArchive.kt$LocalDataArchive$fun locate(path: String): File?</ID>
+    <ID>ReturnCount:LocalPasswordHasher.kt$LocalPasswordHasher$fun isEncoded(value: String): Boolean</ID>
+    <ID>ReturnCount:LocalPasswordHasher.kt$LocalPasswordHasher$fun verify(password: String, encoded: String): Boolean</ID>
+    <ID>ReturnCount:ReminderScheduler.kt$ReminderScheduler$fun scheduleClass(context: Context, schedule: ScheduleEntity)</ID>
+    <ID>ReturnCount:ReminderScheduler.kt$ReminderScheduler$fun scheduleTask(context: Context, task: TaskEntity, reminderMinutes: Int, notifyIfWindowOpen: Boolean = false)</ID>
+    <ID>ReturnCount:ReminderScheduler.kt$ReminderScheduler$internal suspend fun handleTaskAction(context: Context, taskId: Long, snooze: Boolean, database: TemanKuliahDatabase)</ID>
+    <ID>ReturnCount:ReminderScheduler.kt$ReminderScheduler$private fun nextClassReminder(schedule: ScheduleEntity): Long?</ID>
+    <ID>ReturnCount:ReminderScheduler.kt$ScheduleNotificationReceiver$override fun onReceive(context: Context, intent: Intent)</ID>
+    <ID>ReturnCount:ScheduleRules.kt$ScheduleRules$fun durationMinutes(start: String, end: String): Int</ID>
+    <ID>ReturnCount:ScheduleRules.kt$ScheduleRules$fun isValidMeetingUrl(value: String): Boolean</ID>
+    <ID>ReturnCount:ScheduleRules.kt$ScheduleRules$fun occurrenceDates(draft: ScheduleDraft, semesterStart: LocalDate?): Map&lt;Int, List&lt;LocalDate&gt;&gt;</ID>
+    <ID>ReturnCount:ScheduleRules.kt$ScheduleRules$fun validate(draft: ScheduleDraft, semesterStart: LocalDate?): String?</ID>
+    <ID>ReturnCount:TaskCard.kt$private fun taskDuePill( dueAtMillis: Long, now: Long, dayStart: Long, isDone: Boolean, isOverdue: Boolean, isToday: Boolean ): DuePill</ID>
+    <ID>ReturnCount:TranscriptPrinter.kt$internal fun printHtmlDocument(context: Context, html: String, jobName: String): Boolean</ID>
+    <ID>SwallowedException:BackupArchiveReader.kt$BackupArchiveReader$error: Exception</ID>
+    <ID>SwallowedException:LocalDataArchive.kt$LocalDataArchive$error: Exception</ID>
+    <ID>ThrowsCount:BackupArchiveReader.kt$BackupArchiveReader$private fun readSnapshot(input: InputStream, workDir: File): Snapshot</ID>
+    <ID>ThrowsCount:BackupAssetFiles.kt$BackupAssetFiles$internal fun validateAcademicDocumentFile(path: String, file: File)</ID>
+    <ID>ThrowsCount:BackupSnapshotValidator.kt$BackupSnapshotValidator$internal fun validateSnapshot(s: Snapshot)</ID>
+    <ID>ThrowsCount:LocalDataArchive.kt$LocalDataArchive$private suspend fun applyRestore( context: Context, database: TemanKuliahDatabase, snapshot: Snapshot, activeUserEmail: String? ): Summary</ID>
+    <ID>ThrowsCount:LocalDataArchive.kt$LocalDataArchive$private suspend fun prepareExport( context: Context, database: TemanKuliahDatabase, maxUncompressedBytes: Long ): PreparedExport</ID>
+    <ID>ThrowsCount:ScheduleRepository.kt$ScheduleRepository$private fun validateSchedule(schedule: ScheduleEntity)</ID>
+    <ID>TooGenericExceptionCaught:AcademicOcrReader.kt$AcademicOcrReader$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:AuthController.kt$AuthController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:BackupArchiveReader.kt$BackupArchiveReader$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:BackupArchiveReader.kt$BackupArchiveReader$error: Throwable</ID>
+    <ID>TooGenericExceptionCaught:BackupController.kt$BackupController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:CalendarController.kt$CalendarController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:CourseController.kt$CourseController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:DocumentController.kt$DocumentController$commitError: Exception</ID>
+    <ID>TooGenericExceptionCaught:DocumentController.kt$DocumentController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:LocalDataArchive.kt$LocalDataArchive$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:LocalDataArchive.kt$LocalDataArchive$error: Throwable</ID>
+    <ID>TooGenericExceptionCaught:LocalPasswordHasher.kt$LocalPasswordHasher$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:ProfileController.kt$ProfileController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:ProjectController.kt$ProjectController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:ReminderScheduler.kt$ReminderScheduler$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:ScheduleController.kt$ScheduleController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:StudentFileStore.kt$StudentFileStore$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:TaskController.kt$TaskController$error: Exception</ID>
+    <ID>TooGenericExceptionCaught:TranscriptPrinter.kt$error: Exception</ID>
+    <ID>TooGenericExceptionThrown:TodayWidgetDataTest.kt$TodayWidgetDataTest$throw RuntimeException("Simulasi error database")</ID>
+    <ID>TooManyFunctions:Daos.kt$ScheduleDao</ID>
+    <ID>TooManyFunctions:ReminderScheduler.kt$ReminderScheduler</ID>
+    <ID>TooManyFunctions:ScheduleRules.kt$ScheduleRules</ID>
+    <ID>TooManyFunctions:StudentFileStore.kt$StudentFileStore</ID>
+    <ID>TooManyFunctions:TemanKuliahRepository.kt$TemanKuliahRepository</ID>
+  </CurrentIssues>
+</SmellBaseline>

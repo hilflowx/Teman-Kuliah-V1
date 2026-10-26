@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TemanKuliah</string>
+    <string name="widget_today_description">Jadwal kuliah dan tugas hari ini</string>
+</resources>
